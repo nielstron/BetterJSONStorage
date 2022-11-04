@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import _thread as Thread
+import time
 from io import BufferedRandom, BufferedWriter
 from pathlib import Path
 from typing import Literal, Mapping, Optional, Set, Union
@@ -156,6 +157,7 @@ class BetterJSONStorage:
                 self._changed = False
                 self._handle.seek(0)
                 self._handle.write(compress(dumps(self._data)))
+            time.sleep(1)
 
         self._shutdown_lock.release()
 
